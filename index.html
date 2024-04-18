@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+<script>
+    const Calculator = (() => {
+        let memory = 0
+
+        function add(item1, item2) {
+            if (typeof item1 && typeof item2 === "number") {
+                if (memory <= 20) {
+                    memory += item1 + item2
+                    console.log("add", memory)
+                    add(item1, item2)
+                    return memory
+
+                } else {
+                    console.log("Exit from Clossure")
+                }
+
+            } else {
+
+                if (memory <= 20) {
+                    memory += Number(item1) + Number(item2)
+                    console.log("add", memory)
+                    add(item1, item2)
+                    return memory
+                } else {
+                    console.log("Exit from Clossure")
+                }
+
+            }
+        }
+
+        function subtract(item1, item2) {
+            if (typeof item1 && typeof item2 === "number") {
+                if (memory >= 1) {
+                    memory -= item1 - item2
+                    console.log("subtract", memory)
+                    subtract(item1, item2)
+                    return memory
+
+                } else {
+                    console.log("Exit from Clossure")
+                }
+
+            } else {
+
+                if (memory >= 1) {
+                    memory -= Number(item1) - Number(item2)
+                    subtract(item1, item2)
+                    return memory
+                } else {
+                    console.log("Exit from Clossure")
+                }
+
+            }
+        }
+
+        function getMemoryAsString() {
+            return `Your result is ${memory.toString()}`
+        }
+
+
+        function clearMemory() {
+            return memory = 0
+        }
+
+        return {
+            add: add,
+            subtract: subtract,
+            getMemoryAsString: getMemoryAsString,
+            clearMemory: clearMemory,
+
+        };
+    })();
+
+    console.log(Calculator.add(5, "3"))
+    console.log(Calculator.getMemoryAsString())
+    console.log(Calculator.getMemoryAsString())
+    console.log(Calculator.subtract("5", 3))
+    console.log(Calculator.getMemoryAsString())
+    console.log(Calculator.add(5, "3"))
+    console.log(Calculator.clearMemory())
+    console.log(Calculator.getMemoryAsString())
+
+</script>
+</body>
+</html>
