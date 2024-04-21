@@ -10,27 +10,35 @@
         let memory = 0
 
         function add(item1, item2) {
-            if (typeof item1 && typeof item2 === "number") {
-                memory = item1 + item2
-                return memory
-            } else {
-                memory = Number(item1) + Number(item2)
-                return memory
+
+            if (!isNaN(item1)) {
+                item1 = +item1
             }
+
+            if (!isNaN(item2)) {
+                item2 = +item2
+
+            }
+
+            return memory = item1 + item2
+
         }
 
         function subtract(item1, item2) {
-            if (typeof item1 && typeof item2 === "number") {
-                memory = item1 - item2
-                return memory
-            } else {
-                memory = Number(item1) - Number(item2)
-                return memory
+            if (!isNaN(item1)) {
+                item1 = +item1
+
             }
+
+            if (!isNaN(item2)) {
+                item2 = +item2
+
+            }
+            return memory = item1 - item2
         }
 
         function getMemoryAsString() {
-            return `Your result is ${memory.toString()}`
+            return `Your result is ${memory}`
         }
 
 
@@ -47,11 +55,11 @@
 
         };
     })();
-    console.log(Calculator.add(5, 2))
+    console.log(Calculator.add("5", "2"))
     console.log(Calculator.getMemoryAsString())
     console.log(Calculator.clearMemory())
     console.log(Calculator.getMemoryAsString())
-    console.log(Calculator.subtract(10, 7))
+    console.log(Calculator.subtract(10, "7"))
     console.log(Calculator.getMemoryAsString())
     console.log(Calculator.clearMemory())
     console.log(Calculator.getMemoryAsString())
